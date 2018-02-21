@@ -20,6 +20,7 @@ import javax.inject.Inject
  */
 abstract class BaseActivity : AppCompatActivity() {
 
+    @Inject protected lateinit var viewModelFactory: ViewModelProvider.Factory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

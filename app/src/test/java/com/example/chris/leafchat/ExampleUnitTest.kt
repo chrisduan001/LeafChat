@@ -1,6 +1,7 @@
 package com.example.chris.leafchat
 
-import com.example.chris.leafchat.di.components.DaggerMyComponent
+import com.example.chris.leafchat.ui.fragment.BaseFragment
+import com.example.chris.leafchat.ui.fragment.LandingFragment
 import dagger.Component
 import dagger.Module
 import dagger.Provides
@@ -24,10 +25,7 @@ class ExampleUnitTest {
 
     @Test
     fun addition_isCorrect() {
-//        val component = DaggerMyComponent.create()
-//
-//        var i = 0
-//        i++
+
     }
 }
 
