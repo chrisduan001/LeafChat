@@ -1,5 +1,6 @@
 package com.example.chris.leafchat.di.components
 
+import android.app.Application
 import android.arch.lifecycle.ViewModelProvider
 import android.content.Context
 import com.example.chris.leafchat.TestPresenter
@@ -26,5 +27,5 @@ interface ApplicationComponent {
     fun inject(activity: BaseActivity)
 
     fun factory(): ViewModelProvider.Factory
-    fun context() : Context
+    fun application() : Application
 }

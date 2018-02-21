@@ -1,5 +1,6 @@
 package com.example.chris.leafchat.di.modules
 
+import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.example.chris.leafchat.di.ViewModelKey
@@ -17,7 +18,7 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(LandingViewModel::class)
-    abstract fun bindLandingViewModel(landingViewModel: LandingViewModel): ViewModel
+    abstract fun bindLandingViewModel(landingViewModel: LandingViewModel): AndroidViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
