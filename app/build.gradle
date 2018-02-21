@@ -6,10 +6,14 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+def BaseUrl = "BASE_URL"
+def LiveBaseUrl = '"https://www.digit3.me"'
+
 android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.chris.leafchat"
+        buildConfigField 'String', BaseUrl, LiveBaseUrl
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
@@ -40,8 +44,14 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
 
     //dagger
-    compile 'com.google.dagger:dagger:2.8'
-    kapt 'com.google.dagger:dagger-compiler:2.8'
+    compile 'com.google.dagger:dagger:2.11'
+    kapt 'com.google.dagger:dagger-compiler:2.11'
+
+    //network
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
 
     //RTC component
     implementation 'io.pristine:libjingle:11139@aar'
