@@ -10,6 +10,7 @@ import com.example.chris.leafchat.di.modules.NetworkModule
 import com.example.chris.leafchat.di.modules.ViewModelModule
 import com.example.chris.leafchat.network.ServiceHelper
 import com.example.chris.leafchat.ui.activity.LandingActivity
+import com.example.chris.leafchat.util.ErrorHandler
 import dagger.Binds
 import dagger.Component
 import dagger.Module
@@ -28,7 +29,8 @@ interface ApplicationComponent {
 
     fun inject(activity: BaseActivity)
 
-    fun factory(): ViewModelProvider.Factory
+    fun factory() : ViewModelProvider.Factory
     fun application() : Application
-    fun serviceHelper(): ServiceHelper
+    fun serviceHelper() : ServiceHelper
+    fun errorHandler() : ErrorHandler
 }

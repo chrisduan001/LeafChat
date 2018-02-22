@@ -3,4 +3,8 @@ package com.example.chris.leafchat.model
 /**
  * Created by Chris on 2/21/18.
  */
-data class BaseResponse(val errorCode: Int, val message: String)
+abstract class ParentResponse {
+    abstract val error: ErrorResponse?
+}
+data class BaseResponse(override val error: ErrorResponse?) : ParentResponse()
+data class ErrorResponse(val errorCode: Int, val message: String)

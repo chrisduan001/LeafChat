@@ -5,5 +5,11 @@
     <string name="text_continue">Continue</string>
     <string name="error_invalid">Invalid text</string>
     <string name="enter_username">Enter your name</string>
+
+    <string name="error_name_used">User name has been used, please choose a different name</string>
+    <string name="error_passcode_error">Invalid passcode</string>
+    <string name="error_generic">An error has occurred, please try again</string>
     <string name="error_invalid_name">Invalid user name</string>
+
+    <string name="error_connection">Please check your connection and try again</string>
 </resources>

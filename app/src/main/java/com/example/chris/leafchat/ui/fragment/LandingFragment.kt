@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.chris.leafchat.R
 import com.example.chris.leafchat.di.components.LandingComponent
 import com.example.chris.leafchat.viewmodel.LandingViewModel
@@ -49,6 +50,7 @@ class LandingFragment: BaseFragment() {
         landingVm.passCodeObserver.observe(this, passcodeOb)
         landingVm.userNameObserver.observe(this, userNameOb)
         landingVm.progressObserver.observe(this, progressBarOb)
+        landingVm.toastMsgObserver.observe(this, toastOb)
     }
     //endregion
 
@@ -62,6 +64,12 @@ class LandingFragment: BaseFragment() {
     }
 
     private val progressBarOb = Observer<Boolean> { toggleProgressView(setVisible = it) }
+
+    private val toastOb = Observer<String> {
+        if (!it.isNullOrEmpty()) {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        }
+    }
     //endregion
 
     private fun toggleProgressView(setVisible: Boolean?) =
