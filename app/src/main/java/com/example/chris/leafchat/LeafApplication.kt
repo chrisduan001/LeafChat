@@ -27,10 +27,6 @@ class LeafApplication : Application(), LifecycleDelegate {
         applicationComponent.inject(this)
 
         lifecycleHandler.lifecycleDelegate = this
-        registerLifecycleHandler(lifecycleHandler)
-    }
-
-    private fun registerLifecycleHandler(lifeCycleHandler: LifecycleHandler) {
         registerActivityLifecycleCallbacks(lifecycleHandler)
         registerComponentCallbacks(lifecycleHandler)
     }

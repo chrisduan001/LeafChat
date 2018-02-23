@@ -11,7 +11,7 @@ import dagger.Provides
  * Created by Chris on 2/15/18.
  */
 @Module
-class LandingActivityModule constructor(private val activity: Activity) {
+class LoginActivityModule constructor(private val activity: Activity) {
 
     @Provides @PerActivity
     fun provideActivity() : Activity {

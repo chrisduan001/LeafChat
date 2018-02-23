@@ -9,22 +9,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.chris.leafchat.R
-import com.example.chris.leafchat.di.components.LandingComponent
+import com.example.chris.leafchat.di.components.LoginComponent
 import com.example.chris.leafchat.viewmodel.LandingViewModel
-import kotlinx.android.synthetic.main.fragment_landing.*
+import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
 /**
  * Created by Chris on 2/15/18.
  */
-class LandingFragment: BaseFragment() {
+class LoginFragment : BaseFragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var landingVm: LandingViewModel
 
     //region init
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_landing, container, false)
+        val view = inflater.inflate(R.layout.fragment_login, container, false)
 
         initInjector()
 
@@ -36,7 +36,7 @@ class LandingFragment: BaseFragment() {
     }
 
     private fun initInjector() {
-        getComponent(LandingComponent::class.java).inject(this)
+        getComponent(LoginComponent::class.java).inject(this)
 
         landingVm = ViewModelProviders.of(this, viewModelFactory)
                 .get(LandingViewModel::class.java)

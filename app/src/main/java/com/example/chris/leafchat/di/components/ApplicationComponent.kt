@@ -2,23 +2,14 @@ package com.example.chris.leafchat.di.components
 
 import android.app.Application
 import android.arch.lifecycle.ViewModelProvider
-import android.content.Context
 import com.example.chris.leafchat.LeafApplication
-import com.example.chris.leafchat.TestPresenter
 import com.example.chris.leafchat.ui.activity.BaseActivity
 import com.example.chris.leafchat.di.modules.ApplicationModule
 import com.example.chris.leafchat.di.modules.NetworkModule
-import com.example.chris.leafchat.di.modules.ViewModelModule
 import com.example.chris.leafchat.network.ServiceHelper
-import com.example.chris.leafchat.ui.activity.LandingActivity
 import com.example.chris.leafchat.util.ErrorHandler
-import dagger.Binds
+import com.example.chris.leafchat.util.LeafSharedPreference
 import dagger.Component
-import dagger.Module
-import dagger.Provides
-import dagger.multibindings.ClassKey
-import dagger.multibindings.IntoMap
-import dagger.multibindings.StringKey
 import javax.inject.Singleton
 
 /**
@@ -35,4 +26,5 @@ interface ApplicationComponent {
     fun application() : Application
     fun serviceHelper() : ServiceHelper
     fun errorHandler() : ErrorHandler
+    fun sharedPreference() : LeafSharedPreference
 }
