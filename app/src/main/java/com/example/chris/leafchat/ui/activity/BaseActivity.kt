@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity
 import com.example.chris.leafchat.LeafApplication
 import com.example.chris.leafchat.R
 import com.example.chris.leafchat.di.components.ApplicationComponent
+import com.example.chris.leafchat.util.LeafSharedPreference
+import com.example.chris.leafchat.util.Navigator
 import kotlinx.android.synthetic.main.activity_generic.view.*
 import javax.inject.Inject
 
@@ -21,6 +23,8 @@ import javax.inject.Inject
 abstract class BaseActivity : AppCompatActivity() {
 
     @Inject protected lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject protected lateinit var navigator: Navigator
+    @Inject protected lateinit var sharedPreference: LeafSharedPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

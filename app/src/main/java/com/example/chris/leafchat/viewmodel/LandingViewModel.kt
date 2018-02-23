@@ -4,7 +4,7 @@ import android.app.Application
 import android.arch.lifecycle.MutableLiveData
 import android.support.annotation.StringRes
 import com.example.chris.leafchat.R
-import com.example.chris.leafchat.repository.LandingRepository
+import com.example.chris.leafchat.repository.LoginRepository
 import javax.inject.Inject
 
 /**
@@ -12,8 +12,8 @@ import javax.inject.Inject
  */
 class LandingViewModel @Inject constructor(
         application: Application,
-        private val landingRepository: LandingRepository)
-    : BaseViewModel(application), LandingRepository.LandingCallback {
+        private val loginRepository: LoginRepository)
+    : BaseViewModel(application), LoginRepository.LandingCallback {
 
     val passCodeObserver: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val userNameObserver: MutableLiveData<String> by lazy { MutableLiveData<String>() }
@@ -21,7 +21,7 @@ class LandingViewModel @Inject constructor(
     val toastMsgObserver: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 
     init {
-        landingRepository.call(this)
+        loginRepository.call(this)
     }
 
     fun loginUser(passcode: String, userName: String) {
@@ -37,7 +37,7 @@ class LandingViewModel @Inject constructor(
 
         setObserverValue(progressObserver, true)
 
-        landingRepository.loginUser(passcode, userName)
+        loginRepository.loginUser(passcode, userName)
     }
 
     override fun onLoginSuccessful() {

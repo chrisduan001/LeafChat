@@ -1,6 +1,7 @@
 package com.example.chris.leafchat.ui.activity
 
-import android.arch.lifecycle.ViewModelProvider
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.example.chris.leafchat.R
 import com.example.chris.leafchat.di.HasComponent
@@ -8,7 +9,6 @@ import com.example.chris.leafchat.di.components.DaggerLoginComponent
 import com.example.chris.leafchat.di.components.LoginComponent
 import com.example.chris.leafchat.ui.fragment.LoginFragment
 import kotlinx.android.synthetic.main.include_toolbar.*
-import javax.inject.Inject
 
 class LoginActivity : BaseActivity(), HasComponent<LoginComponent> {
 
@@ -37,5 +37,11 @@ class LoginActivity : BaseActivity(), HasComponent<LoginComponent> {
 
     override fun getComponent(): LoginComponent {
         return loginComponent
+    }
+
+    companion object {
+        fun newInstance(context: Context) : Intent {
+            return Intent(context, LoginActivity::class.java)
+        }
     }
 }

@@ -7,6 +7,7 @@ import com.example.chris.leafchat.ui.activity.BaseActivity
 import com.example.chris.leafchat.di.modules.ApplicationModule
 import com.example.chris.leafchat.di.modules.NetworkModule
 import com.example.chris.leafchat.network.ServiceHelper
+import com.example.chris.leafchat.ui.activity.LandingActivity
 import com.example.chris.leafchat.util.ErrorHandler
 import com.example.chris.leafchat.util.LeafSharedPreference
 import dagger.Component
