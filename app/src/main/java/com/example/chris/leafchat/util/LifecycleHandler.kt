@@ -5,18 +5,16 @@ import android.app.Application
 import android.content.ComponentCallbacks2
 import android.content.res.Configuration
 import android.os.Bundle
-import com.example.chris.leafchat.LifecycleDelegate
 import com.example.chris.leafchat.repository.LogoutRepository
 import javax.inject.Inject
 
 /**
  * Created by Chris on 2/22/18.
  */
-class LifecycleHandler @Inject constructor(private val logoutRepository: LogoutRepository)
+class LifecycleHandler @Inject constructor(
+        private val logoutRepository: LogoutRepository,
+        private val sharedPreference: LeafSharedPreference)
     :Application.ActivityLifecycleCallbacks, ComponentCallbacks2{
-    private var appInForeground = false
-
-    lateinit var lifecycleDelegate: LifecycleDelegate
 
     override fun onActivityCreated(p0: Activity?, p1: Bundle?) {}
 
@@ -36,16 +34,12 @@ class LifecycleHandler @Inject constructor(private val logoutRepository: LogoutR
 
     override fun onTrimMemory(level: Int) {
         if (level == ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN) {
-            appInForeground = false
-            lifecycleDelegate.onAppBackgrounded()
+            val userName = sharedPreference.getUserName()
+            if (!userName.isEmpty()) {
+                logoutRepository.logoutUser(userName)
+            }
         }
     }
 
-    override fun onActivityResumed(p0: Activity?) {
-        if (!appInForeground) {
-            appInForeground = true
-            lifecycleDelegate.onAppForegrounded()
-        }
-    }
-
+    override fun onActivityResumed(p0: Activity?) {}
 }

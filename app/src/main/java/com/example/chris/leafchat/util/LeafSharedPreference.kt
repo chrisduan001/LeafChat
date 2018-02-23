@@ -10,10 +10,7 @@ class LeafSharedPreference constructor(private val sharedPreferences: SharedPref
     private val sp_passcode = "sp_passcode"
 
     fun setUserName(userName: String) {
-        val editor = sharedPreferences.edit()
-        editor.putString(sp_user_name, userName)
-
-        editor.apply()
+        setSpValue { editor -> editor.putString(sp_user_name, userName) }
     }
 
     fun getUserName() : String {
@@ -21,13 +18,24 @@ class LeafSharedPreference constructor(private val sharedPreferences: SharedPref
     }
 
     fun setPasscode(passcode: String) {
-        val editor = sharedPreferences.edit()
-        editor.putString(sp_passcode, passcode)
-
-        editor.apply()
+        setSpValue { editor ->  editor.putString(sp_passcode, passcode) }
     }
 
     fun getPasscode() : String {
         return sharedPreferences.getString(sp_passcode, "")
+    }
+
+    private inline fun setSpValue(setValue: (SharedPreferences.Editor) -> Unit) {
+        val editor = sharedPreferences.edit()
+        setValue(editor)
+
+        editor.apply()
+    }
+
+    fun clearSharedPreference() {
+        val editor = sharedPreferences.edit()
+        editor.clear()
+
+        editor.apply()
     }
 }

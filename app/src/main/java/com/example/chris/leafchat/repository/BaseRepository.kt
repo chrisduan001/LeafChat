@@ -27,7 +27,8 @@ abstract class BaseRepository<LISTENER : BaseRepoCallback> constructor(
 
     protected inline fun <RESPONSE : ParentResponse> executeNetworkCall(
             crossinline request: () -> Single<RESPONSE>,
-            crossinline successful: (t: RESPONSE) -> Unit) {
+            crossinline successful: (t: RESPONSE) -> Unit,
+            crossinline error: () -> Unit) {
 
         //ErrorHandler must not be null when serviceHelper is used
         request().subscribeOn(Schedulers.io())
@@ -37,12 +38,24 @@ abstract class BaseRepository<LISTENER : BaseRepoCallback> constructor(
                             errorHandler!!.checkApiResponseError(t)?.let {
                                 listener?.onErrorWithId(it)
 
+                                error()
                                 return@subscribe
                             }
 
                             successful(t)
                         },
-                        { t: Throwable? -> listener?.onErrorWithId(errorHandler!!.checkRxJavaError(t)) }
+                        { t: Throwable? ->
+                            listener?.onErrorWithId(errorHandler!!.checkRxJavaError(t))
+                            error()
+                        }
                 )
+    }
+
+    protected inline fun <RESPONSE : ParentResponse> executeNetworkCall(
+            crossinline request: () -> Single<RESPONSE>) {
+
+        request().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ _, _ ->  })
     }
 }

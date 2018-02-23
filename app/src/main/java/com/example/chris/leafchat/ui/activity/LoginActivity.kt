@@ -27,9 +27,9 @@ class LoginActivity : BaseActivity(), HasComponent<LoginComponent> {
         performFragmentTransaction(LoginFragment())
     }
 
-    private fun initToolbar() {
-        setSupportActionBar(view_toolbar)
-
+    override fun initToolbar() {
+        super.initToolbar()
+        
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         view_toolbar.showTitle(R.string.landing_title)

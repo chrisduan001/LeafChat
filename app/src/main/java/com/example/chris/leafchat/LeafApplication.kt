@@ -10,8 +10,7 @@ import javax.inject.Inject
 /**
  * Created by Chris on 2/15/18.
  */
-class LeafApplication : Application(), LifecycleDelegate {
-
+class LeafApplication : Application() {
     @Inject lateinit var lifecycleHandler: LifecycleHandler
 
     val applicationComponent: ApplicationComponent by lazy {
@@ -26,21 +25,7 @@ class LeafApplication : Application(), LifecycleDelegate {
 
         applicationComponent.inject(this)
 
-        lifecycleHandler.lifecycleDelegate = this
         registerActivityLifecycleCallbacks(lifecycleHandler)
         registerComponentCallbacks(lifecycleHandler)
     }
-
-    override fun onAppBackgrounded() {
-        Logger.log("life cycle", "backgrounded")
-    }
-
-    override fun onAppForegrounded() {
-        Logger.log("lifecycle", "foregrounded")
-    }
-}
-
-interface LifecycleDelegate {
-    fun onAppBackgrounded()
-    fun onAppForegrounded()
 }

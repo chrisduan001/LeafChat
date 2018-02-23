@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProvider
 import android.content.Context
 import android.os.Bundle
+import android.support.annotation.CallSuper
 import android.support.annotation.IntDef
 import android.support.annotation.NonNull
 import android.support.v4.app.Fragment
@@ -14,6 +15,7 @@ import com.example.chris.leafchat.di.components.ApplicationComponent
 import com.example.chris.leafchat.util.LeafSharedPreference
 import com.example.chris.leafchat.util.Navigator
 import kotlinx.android.synthetic.main.activity_generic.view.*
+import kotlinx.android.synthetic.main.include_toolbar.*
 import javax.inject.Inject
 
 @SuppressLint("Registered")
@@ -47,6 +49,11 @@ abstract class BaseActivity : AppCompatActivity() {
         }
 
         transaction.commit()
+    }
+
+    @CallSuper
+    protected open fun initToolbar() {
+        setSupportActionBar(view_toolbar)
     }
 
     protected fun getApplicationComponent() : ApplicationComponent {

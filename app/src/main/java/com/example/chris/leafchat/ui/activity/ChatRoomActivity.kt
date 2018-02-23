@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import com.example.chris.leafchat.Logger
+import com.example.chris.leafchat.R
+import kotlinx.android.synthetic.main.include_toolbar.*
 
 /**
  * Created by Chris on 2/23/18.
@@ -12,6 +14,7 @@ class ChatRoomActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_generic)
 
         savedInstanceState?.let {
             val bundle = intent.extras
@@ -19,6 +22,14 @@ class ChatRoomActivity : BaseActivity() {
             val passcode = bundle.getString(PASSCODE)
             Logger.log("user name pass code", userName + " " + passcode)
         }
+    }
+
+    override fun initToolbar() {
+        super.initToolbar()
+
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        view_toolbar.showTitle(R.string.chatroom_title)
     }
 
     companion object {

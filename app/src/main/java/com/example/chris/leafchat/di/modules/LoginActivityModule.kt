@@ -1,9 +1,7 @@
 package com.example.chris.leafchat.di.modules
 
 import android.app.Activity
-import com.example.chris.leafchat.TestPresenter
 import com.example.chris.leafchat.di.PerActivity
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 

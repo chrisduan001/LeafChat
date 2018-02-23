@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">LeafChat</string>
     <string name="landing_title">Landing</string>
+    <string name="chatroom_title">Chat room</string>
     <string name="enter_passcode">Enter passcode to continue</string>
     <string name="text_continue">Continue</string>
     <string name="error_invalid">Invalid text</string>

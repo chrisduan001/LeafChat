@@ -11,6 +11,6 @@ class LogoutRepository @Inject constructor(serviceHelper: ServiceHelper, errorHa
     : BaseRepository<BaseRepoCallback>(serviceHelper, errorHandler) {
 
     fun logoutUser(userName: String) {
-        executeNetworkCall({serviceHelper!!.logoutUser(userName)}, {})
+        executeNetworkCall({serviceHelper!!.logoutUser(userName)})
     }
 }
