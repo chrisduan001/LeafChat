@@ -3,6 +3,7 @@ package com.example.chris.leafchat.di.components
 import android.app.Application
 import android.arch.lifecycle.ViewModelProvider
 import android.content.Context
+import com.example.chris.leafchat.LeafApplication
 import com.example.chris.leafchat.TestPresenter
 import com.example.chris.leafchat.ui.activity.BaseActivity
 import com.example.chris.leafchat.di.modules.ApplicationModule
@@ -28,6 +29,7 @@ import javax.inject.Singleton
 interface ApplicationComponent {
 
     fun inject(activity: BaseActivity)
+    fun inject(application: LeafApplication)
 
     fun factory() : ViewModelProvider.Factory
     fun application() : Application
