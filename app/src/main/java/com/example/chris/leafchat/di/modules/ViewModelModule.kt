@@ -1,10 +1,9 @@
 package com.example.chris.leafchat.di.modules
 
 import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.example.chris.leafchat.di.ViewModelKey
-import com.example.chris.leafchat.viewmodel.LandingViewModel
+import com.example.chris.leafchat.viewmodel.LoginViewModel
 import com.example.chris.leafchat.viewmodel.ViewModelFactory
 import dagger.Binds
 import dagger.Module
@@ -17,8 +16,8 @@ import dagger.multibindings.IntoMap
 abstract class ViewModelModule {
     @Binds
     @IntoMap
-    @ViewModelKey(LandingViewModel::class)
-    abstract fun bindLandingViewModel(landingViewModel: LandingViewModel): AndroidViewModel
+    @ViewModelKey(LoginViewModel::class)
+    abstract fun bindLandingViewModel(loginViewModel: LoginViewModel): AndroidViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

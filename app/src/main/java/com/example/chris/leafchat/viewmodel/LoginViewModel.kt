@@ -10,15 +10,16 @@ import javax.inject.Inject
 /**
  * Created by Chris on 2/19/18.
  */
-class LandingViewModel @Inject constructor(
+class LoginViewModel @Inject constructor(
         application: Application,
         private val loginRepository: LoginRepository)
-    : BaseViewModel(application), LoginRepository.LandingCallback {
+    : BaseViewModel(application), LoginRepository.LoginCallback {
 
     val passCodeObserver: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val userNameObserver: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val progressObserver: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
     val toastMsgObserver: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val loginObserver: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
 
     init {
         loginRepository.call(this)
@@ -42,6 +43,7 @@ class LandingViewModel @Inject constructor(
 
     override fun onLoginSuccessful() {
         setObserverValue(progressObserver, false)
+        setObserverValue(loginObserver, true)
     }
 
     override fun onErrorWithId(@StringRes error: Int) {

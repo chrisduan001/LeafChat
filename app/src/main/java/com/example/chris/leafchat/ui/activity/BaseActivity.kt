@@ -2,6 +2,7 @@ package com.example.chris.leafchat.ui.activity
 
 import android.annotation.SuppressLint
 import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
 import android.support.annotation.CallSuper
@@ -14,6 +15,8 @@ import com.example.chris.leafchat.R
 import com.example.chris.leafchat.di.components.ApplicationComponent
 import com.example.chris.leafchat.util.LeafSharedPreference
 import com.example.chris.leafchat.util.Navigator
+import com.example.chris.leafchat.viewmodel.BaseViewModel
+import com.example.chris.leafchat.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_generic.view.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 import javax.inject.Inject
@@ -58,5 +61,10 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected fun getApplicationComponent() : ApplicationComponent {
         return (application as LeafApplication).applicationComponent
+    }
+
+    protected fun <T : BaseViewModel> getViewModel(clazz: Class<T>) : T {
+        return ViewModelProviders.of(this, viewModelFactory)
+                .get(clazz)
     }
 }

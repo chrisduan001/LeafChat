@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.chris.leafchat.R
 import com.example.chris.leafchat.di.components.LoginComponent
-import com.example.chris.leafchat.viewmodel.LandingViewModel
+import com.example.chris.leafchat.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
@@ -20,7 +20,7 @@ import javax.inject.Inject
 class LoginFragment : BaseFragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
-    private lateinit var landingVm: LandingViewModel
+    private lateinit var loginVm: LoginViewModel
 
     //region init
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -38,19 +38,19 @@ class LoginFragment : BaseFragment() {
     private fun initInjector() {
         getComponent(LoginComponent::class.java).inject(this)
 
-        landingVm = ViewModelProviders.of(this, viewModelFactory)
-                .get(LandingViewModel::class.java)
+        loginVm = ViewModelProviders.of(this, viewModelFactory)
+                .get(LoginViewModel::class.java)
     }
 
     private fun setupViews() {
         view_continueBtn.setOnClickListener {
-            landingVm.loginUser(view_passcodeEt.text.toString(), view_usernameEt.text.toString())
+            loginVm.loginUser(view_passcodeEt.text.toString(), view_usernameEt.text.toString())
         }
 
-        landingVm.passCodeObserver.observe(this, passcodeOb)
-        landingVm.userNameObserver.observe(this, userNameOb)
-        landingVm.progressObserver.observe(this, progressBarOb)
-        landingVm.toastMsgObserver.observe(this, toastOb)
+        loginVm.passCodeObserver.observe(this, passcodeOb)
+        loginVm.userNameObserver.observe(this, userNameOb)
+        loginVm.progressObserver.observe(this, progressBarOb)
+        loginVm.toastMsgObserver.observe(this, toastOb)
     }
     //endregion
 

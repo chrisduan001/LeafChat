@@ -5,6 +5,7 @@ import com.example.chris.leafchat.model.LoginModel
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 /**
@@ -15,5 +16,6 @@ interface LeafChatApi {
     fun loginUser(@Body loginModel: LoginModel) : Single<BaseResponse>
 
     @POST("/api/chatLogout")
+    @FormUrlEncoded
     fun logoutUser(@Field("userName") userName: String) : Single<BaseResponse>
 }

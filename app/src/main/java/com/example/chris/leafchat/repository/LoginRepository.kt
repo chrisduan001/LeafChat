@@ -13,7 +13,7 @@ class LoginRepository @Inject constructor(
         serviceHelper: ServiceHelper,
         errorHandler: ErrorHandler,
         private val sharedPreference: LeafSharedPreference) :
-        BaseRepository<LoginRepository.LandingCallback>(
+        BaseRepository<LoginRepository.LoginCallback>(
                 serviceHelper,
                 errorHandler) {
 
@@ -31,7 +31,7 @@ class LoginRepository @Inject constructor(
         )
     }
 
-    interface LandingCallback : BaseRepoCallback {
+    interface LoginCallback : BaseRepoCallback {
         fun onLoginSuccessful()
     }
 }

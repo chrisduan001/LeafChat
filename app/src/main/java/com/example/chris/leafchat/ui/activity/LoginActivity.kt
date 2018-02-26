@@ -1,5 +1,6 @@
 package com.example.chris.leafchat.ui.activity
 
+import android.arch.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,10 +9,12 @@ import com.example.chris.leafchat.di.HasComponent
 import com.example.chris.leafchat.di.components.DaggerLoginComponent
 import com.example.chris.leafchat.di.components.LoginComponent
 import com.example.chris.leafchat.ui.fragment.LoginFragment
+import com.example.chris.leafchat.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.include_toolbar.*
 
 class LoginActivity : BaseActivity(), HasComponent<LoginComponent> {
 
+    //region init
     private val loginComponent: LoginComponent by lazy {
         DaggerLoginComponent.builder()
                 .applicationComponent(getApplicationComponent())
@@ -25,6 +28,8 @@ class LoginActivity : BaseActivity(), HasComponent<LoginComponent> {
         initToolbar()
 
         performFragmentTransaction(LoginFragment())
+
+        setupViewModel()
     }
 
     override fun initToolbar() {
@@ -38,6 +43,20 @@ class LoginActivity : BaseActivity(), HasComponent<LoginComponent> {
     override fun getComponent(): LoginComponent {
         return loginComponent
     }
+    //endregion
+
+    //region viewmodel
+    private fun setupViewModel() {
+        val loginVm = getViewModel(LoginViewModel::class.java)
+        loginVm.loginObserver.observe(this, Observer<Boolean> {
+            t -> if (t == true) {
+            navigator.navigateToChatRoom(
+                    loginVm.userNameObserver.value!!,
+                    loginVm.passCodeObserver.value!!) }
+            finish()
+        })
+    }
+    //endregion
 
     companion object {
         fun newInstance(context: Context) : Intent {

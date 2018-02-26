@@ -16,7 +16,7 @@ class SharedPreferencesTest : BaseTest() {
     @Inject lateinit var sharedPreference: LeafSharedPreference
 
     @Before
-    fun before() {
+    override fun before() {
         component.inject(this)
     }
 
