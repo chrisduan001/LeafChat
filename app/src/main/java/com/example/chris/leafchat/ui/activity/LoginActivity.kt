@@ -1,6 +1,5 @@
 package com.example.chris.leafchat.ui.activity
 
-import android.arch.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -9,10 +8,9 @@ import com.example.chris.leafchat.di.HasComponent
 import com.example.chris.leafchat.di.components.DaggerLoginComponent
 import com.example.chris.leafchat.di.components.LoginComponent
 import com.example.chris.leafchat.ui.fragment.LoginFragment
-import com.example.chris.leafchat.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.include_toolbar.*
 
-class LoginActivity : BaseActivity(), HasComponent<LoginComponent> {
+class LoginActivity : BaseActivity(), HasComponent<LoginComponent>, LoginFragment.LoginActivityListener {
 
     //region init
     private val loginComponent: LoginComponent by lazy {
@@ -28,8 +26,6 @@ class LoginActivity : BaseActivity(), HasComponent<LoginComponent> {
         initToolbar()
 
         performFragmentTransaction(LoginFragment())
-
-        setupViewModel()
     }
 
     override fun initToolbar() {
@@ -45,16 +41,10 @@ class LoginActivity : BaseActivity(), HasComponent<LoginComponent> {
     }
     //endregion
 
-    //region viewmodel
-    private fun setupViewModel() {
-        val loginVm = getViewModel(LoginViewModel::class.java)
-        loginVm.loginObserver.observe(this, Observer<Boolean> {
-            t -> if (t == true) {
-            navigator.navigateToChatRoom(
-                    loginVm.userNameObserver.value!!,
-                    loginVm.passCodeObserver.value!!) }
-            finish()
-        })
+    //regionfragment call
+    override fun onLoginSuccessful(userName: String, passcode: String) {
+        navigator.navigateToChatRoom(userName, passcode)
+        finish()
     }
     //endregion
 

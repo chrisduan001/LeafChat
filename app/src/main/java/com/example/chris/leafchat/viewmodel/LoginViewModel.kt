@@ -2,6 +2,7 @@ package com.example.chris.leafchat.viewmodel
 
 import android.app.Application
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.Transformations
 import android.support.annotation.StringRes
 import com.example.chris.leafchat.R
 import com.example.chris.leafchat.repository.LoginRepository

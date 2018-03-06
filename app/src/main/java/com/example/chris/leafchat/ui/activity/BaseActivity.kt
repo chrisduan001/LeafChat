@@ -62,9 +62,4 @@ abstract class BaseActivity : AppCompatActivity() {
     protected fun getApplicationComponent() : ApplicationComponent {
         return (application as LeafApplication).applicationComponent
     }
-
-    protected fun <T : BaseViewModel> getViewModel(clazz: Class<T>) : T {
-        return ViewModelProviders.of(this, viewModelFactory)
-                .get(clazz)
-    }
 }

@@ -1,8 +1,10 @@
 package com.example.chris.leafchat.ui.fragment
 
+import android.app.Activity
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,10 +21,21 @@ import javax.inject.Inject
  */
 class LoginFragment : BaseFragment() {
 
+    interface LoginActivityListener {
+        fun onLoginSuccessful(userName: String, passcode: String)
+    }
+
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var loginVm: LoginViewModel
 
-    //region init
+    private lateinit var activityListener: LoginActivityListener
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        activityListener = context as LoginActivityListener
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
@@ -51,6 +64,7 @@ class LoginFragment : BaseFragment() {
         loginVm.userNameObserver.observe(this, userNameOb)
         loginVm.progressObserver.observe(this, progressBarOb)
         loginVm.toastMsgObserver.observe(this, toastOb)
+        loginVm.loginObserver.observe(this, loginObserver)
     }
     //endregion
 
@@ -68,6 +82,13 @@ class LoginFragment : BaseFragment() {
     private val toastOb = Observer<String> {
         if (!it.isNullOrEmpty()) {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private val loginObserver = Observer<Boolean> {
+        if (it == true) {
+            activityListener.onLoginSuccessful(view_passcodeEt.text.toString(),
+                    view_usernameEt.text.toString())
         }
     }
     //endregion
