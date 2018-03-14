@@ -1,6 +1,7 @@
 package com.example.chris.leafchat.network
 
 import android.support.annotation.VisibleForTesting
+import com.example.chris.leafchat.model.AllUserResponse
 import com.example.chris.leafchat.model.BaseResponse
 import com.example.chris.leafchat.model.LoginModel
 import io.reactivex.Observable
@@ -17,5 +18,9 @@ open class ServiceHelper constructor(private val leafChatApi: LeafChatApi) {
 
     open fun logoutUser(userName: String) : Single<BaseResponse> {
         return leafChatApi.logoutUser(userName)
+    }
+
+    open fun getAllUsers() : Single<AllUserResponse> {
+        return leafChatApi.getAllUsers()
     }
 }

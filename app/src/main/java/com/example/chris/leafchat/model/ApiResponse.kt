@@ -8,3 +8,5 @@ abstract class ParentResponse {
 }
 data class BaseResponse(override val error: ErrorResponse?) : ParentResponse()
 data class ErrorResponse(val errorCode: Int, val message: String)
+
+data class AllUserResponse(override val error: ErrorResponse?, val users: String) : ParentResponse()

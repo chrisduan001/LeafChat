@@ -40,6 +40,10 @@ class ChatRoomFragment : BaseFragment() {
     private fun setupViews() {
         view_username.text = arguments?.getString(ChatRoomActivity.USER_NAME)
         view_password.text = arguments?.getString(ChatRoomActivity.PASSCODE)
+
+        view_password.setOnClickListener {
+            chatRoomVm.getAllUsers()
+        }
     }
 
     companion object {

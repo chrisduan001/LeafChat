@@ -9,7 +9,9 @@ import com.example.chris.leafchat.repository.LoginRepoTest
 import com.example.chris.leafchat.util.ErrorHandler
 import com.example.chris.leafchat.util.LeafSharedPreference
 import com.example.chris.leafchat.util.SharedPreferencesTest
+import com.example.chris.leafchat.viewmodel.ChatRoomViewModelTest
 import dagger.Component
+import org.mockito.Mock
 import javax.inject.Singleton
 
 /**
@@ -24,4 +26,6 @@ interface MainTestComponent {
     fun inject(loginRepoTest: LoginRepoTest)
 
 
+    //viewmodel
+    fun inject(chatVm: ChatRoomViewModelTest)
 }

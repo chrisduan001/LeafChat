@@ -40,13 +40,5 @@ class LoginRepoTest : BaseTest() {
 
     @Test
     fun testLoginUser() {
-        spyRepository.loginUser("t1", "t11")
-        verify(loginCallback, times(1)).onLoginSuccessful()
-
-        assertThat(sharedPreference.getPasscode(), `is`("t1"))
-
-        spyRepository.loginUser("t2", MockServiceHelper.TEST_STATUS_ERROR_0)
-        verify(loginCallback, times(1)).onErrorWithId(ArgumentMatchers.anyInt())
-        assertThat(sharedPreference.getPasscode(), `is`(""))
     }
 }
