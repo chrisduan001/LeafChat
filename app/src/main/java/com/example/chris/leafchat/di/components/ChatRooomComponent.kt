@@ -12,6 +12,4 @@ import dagger.Component
 @Component(dependencies = [ApplicationComponent::class], modules = [ChatRoomActivityModule::class])
 interface ChatRooomComponent {
     fun inject(fragment: ChatRoomFragment)
-
-    fun userList() : List<String>
 }

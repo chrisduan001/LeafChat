@@ -51,8 +51,6 @@ class ChatRoomFragment : BaseFragment() {
     private fun setupViews() {
         view_recyclerview.layoutManager = LinearLayoutManager(activity)
         view_recyclerview.adapter = usersAdapter
-
-        view_connectBtn.setOnClickListener {  }
     }
     //endregion
 
