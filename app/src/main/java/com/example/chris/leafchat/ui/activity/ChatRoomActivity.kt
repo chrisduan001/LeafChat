@@ -3,7 +3,6 @@ package com.example.chris.leafchat.ui.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.example.chris.leafchat.Logger
 import com.example.chris.leafchat.R
 import com.example.chris.leafchat.di.HasComponent
 import com.example.chris.leafchat.di.components.ChatRooomComponent
@@ -17,7 +16,7 @@ import kotlinx.android.synthetic.main.include_toolbar.*
 class ChatRoomActivity : BaseActivity(), HasComponent<ChatRooomComponent> {
 
     //region init
-    private val chatRooomComponent: ChatRooomComponent by lazy {
+    private val chatRoomComponent: ChatRooomComponent by lazy {
         DaggerChatRooomComponent.builder()
                 .applicationComponent(getApplicationComponent())
                 .build()
@@ -51,7 +50,7 @@ class ChatRoomActivity : BaseActivity(), HasComponent<ChatRooomComponent> {
     }
 
     override fun getComponent(): ChatRooomComponent {
-        return chatRooomComponent
+        return chatRoomComponent
     }
     //endregion
 

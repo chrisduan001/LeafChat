@@ -19,5 +19,6 @@
     </style>
 
     <style name="ToolbarTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 </resources>
