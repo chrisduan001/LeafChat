@@ -29,6 +29,11 @@ class ChatRoomViewModel @Inject constructor(
         chatRoomRepository.getAllUsers()
     }
 
+    fun requestConnection(userName: String) {
+        setObserverValue(progressObserver, true)
+        Logger.log("connect", userName)
+    }
+
     override fun onGetAllUser(users: List<String>) {
         setObserverValue(progressObserver, false)
         setObserverValue(userListObserver, users)

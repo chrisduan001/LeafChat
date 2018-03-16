@@ -13,7 +13,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class ViewModelFactory @Inject constructor(
-        private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<AndroidViewModel>>)
+        private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards AndroidViewModel>)
     : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
@@ -23,7 +23,7 @@ class ViewModelFactory @Inject constructor(
         ?: throw IllegalArgumentException("unknown model class " + modelClass)
 
         return try {
-            creator.get() as T
+            creator as T
         } catch (e: Exception) {
             throw RuntimeException(e)
         }

@@ -2,6 +2,7 @@ package com.example.chris.leafchat.ui.fragment
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -42,7 +43,7 @@ class ChatRoomFragment : BaseFragment() {
         getComponent(ChatRooomComponent::class.java).inject(this)
 
         chatRoomVm = getViewModel(ChatRoomViewModel::class.java, viewModelFactory)
-
+        ViewModelProviders.of(this).get(ChatRoomViewModel::class.java)
         setupViewModel()
 
         chatRoomVm.getAllUsers()
