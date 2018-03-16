@@ -4,17 +4,16 @@ import android.support.annotation.CallSuper
 import com.example.chris.leafchat.di.DaggerMainTestComponent
 import com.example.chris.leafchat.di.MainTestComponent
 import com.example.chris.leafchat.di.modules.ApplicationModule
-import com.example.chris.leafchat.util.LeafSharedPreference
+import com.example.chris.leafchat.ui.activity.ChatRoomActivity
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
 import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith
+import org.mockito.Mockito.mock
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
-import org.robolectric.annotation.Config
-import javax.inject.Inject
 
 /**
  * Created by Chris on 2/23/18.

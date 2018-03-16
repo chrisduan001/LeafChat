@@ -23,9 +23,9 @@ import javax.inject.Inject
  */
 class ChatRoomFragment : BaseFragment() {
 
-    @Inject lateinit var usersAdapter : UserListAdapter
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var chatRoomVm: ChatRoomViewModel
+    private lateinit var usersAdapter : UserListAdapter
 
     //region init & set up views
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -41,7 +41,6 @@ class ChatRoomFragment : BaseFragment() {
 
     private fun initInjector() {
         getComponent(ChatRooomComponent::class.java).inject(this)
-
         chatRoomVm = getViewModel(ChatRoomViewModel::class.java, viewModelFactory)
         ViewModelProviders.of(this).get(ChatRoomViewModel::class.java)
         setupViewModel()
@@ -51,6 +50,7 @@ class ChatRoomFragment : BaseFragment() {
 
     private fun setupViews() {
         view_recyclerview.layoutManager = LinearLayoutManager(activity)
+        usersAdapter = UserListAdapter(emptyList(), chatRoomVm)
         view_recyclerview.adapter = usersAdapter
     }
     //endregion

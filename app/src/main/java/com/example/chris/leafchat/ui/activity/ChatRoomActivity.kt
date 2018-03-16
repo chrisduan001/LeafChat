@@ -7,7 +7,6 @@ import com.example.chris.leafchat.R
 import com.example.chris.leafchat.di.HasComponent
 import com.example.chris.leafchat.di.components.ChatRooomComponent
 import com.example.chris.leafchat.di.components.DaggerChatRooomComponent
-import com.example.chris.leafchat.di.modules.ChatRoomActivityModule
 import com.example.chris.leafchat.ui.fragment.ChatRoomFragment
 import kotlinx.android.synthetic.main.include_toolbar.*
 
@@ -20,7 +19,6 @@ class ChatRoomActivity : BaseActivity(), HasComponent<ChatRooomComponent> {
     private val chatRoomComponent: ChatRooomComponent by lazy {
         DaggerChatRooomComponent.builder()
                 .applicationComponent(getApplicationComponent())
-                .chatRoomActivityModule(ChatRoomActivityModule(this))
                 .build()
     }
 
