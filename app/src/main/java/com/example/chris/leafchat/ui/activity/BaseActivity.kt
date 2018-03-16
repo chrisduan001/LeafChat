@@ -35,8 +35,6 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         getApplicationComponent().inject(this)
-
-        performFragmentTransaction(Fragment())
     }
 
     protected fun performFragmentTransaction(

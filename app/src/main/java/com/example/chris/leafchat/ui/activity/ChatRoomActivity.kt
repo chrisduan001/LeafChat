@@ -28,7 +28,9 @@ class ChatRoomActivity : BaseActivity(), HasComponent<ChatRooomComponent> {
 
         initToolbar()
 
-        setupFragment()
+        if (savedInstanceState == null) {
+            setupFragment()
+        }
 
         setupViewModel()
     }
