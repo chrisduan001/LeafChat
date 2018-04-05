@@ -8,6 +8,7 @@ import com.example.chris.leafchat.ui.activity.ChatRoomActivity
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.plugins.RxJavaPlugins
 import io.reactivex.schedulers.Schedulers
+import okhttp3.Credentials
 import org.junit.After
 import org.junit.Before
 import org.junit.runner.RunWith

@@ -49,7 +49,7 @@ dependencies {
     implementation libs.rxjava
 
     //dagger
-    compile libs.dagger
+    implementation libs.dagger
     kapt libs.daggerKapt
 
     //network

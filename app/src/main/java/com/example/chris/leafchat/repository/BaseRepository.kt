@@ -26,7 +26,7 @@ abstract class BaseRepository<LISTENER : BaseRepoCallback> constructor(
     }
 
     protected inline fun <RESPONSE : ParentResponse> executeNetworkCall(
-            crossinline request: () -> Single<RESPONSE>,
+            request: () -> Single<RESPONSE>,
             crossinline successful: (t: RESPONSE) -> Unit,
             crossinline error: () -> Unit) {
 
